@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "8cd91dad-9b9f-4e62-9df4-ae7ef5a059cc",
+		"name": "graphql-crud-api-repo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17277718"
+	},
+	"item": [
+		{
+			"name": "helloworld",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query{\r\n  hello \r\n}\r\n",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{url}}",
+					"host": [
+						"{{url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation CreateUser($name: String!, $email: String!, $password: String!) { \r\n    createUser(name: $name, email: $email, password: $password) { \r\n        id, name, email, password \r\n    } \r\n}\r\n",
+						"variables": " {\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"password\": \"securepassword\"\r\n  }"
+					}
+				},
+				"url": {
+					"raw": "{{url}}",
+					"host": [
+						"{{url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query{\r\n    getUsers{\r\n        id,\r\n        name,\r\n        email\r\n    }\r\n} ",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{url}}",
+					"host": [
+						"{{url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-user-by-id",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetUser($id: ID!) {\r\n  getUser(id: $id) {\r\n    id\r\n    name\r\n    email\r\n    password\r\n  }\r\n}",
+						"variables": "{\r\n    \"id\":\"676d9adff3c1068fc06e13bb\"\r\n}"
+					}
+				},
+				"url": {
+					"raw": "{{url}}",
+					"host": [
+						"{{url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-by-user-id",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation UpdateUser($id: ID!, $name: String, $email: String, $password: String) {\r\n  updateUser(id: $id, name: $name, email: $email, password: $password) {\r\n    id\r\n    name\r\n    email\r\n    password\r\n  }\r\n}",
+						"variables": "{\r\n    \"id\":\"676d9adff3c1068fc06e13bb\",\r\n    \"name\":\"padmanabha\",\r\n    \"email\":\"padmanabha@test\"\r\n}"
+					}
+				},
+				"url": {
+					"raw": "{{url}}",
+					"host": [
+						"{{url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-by-user-id",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation DeleteUser($id: ID!) {\r\n  deleteUser(id: $id) {\r\n    id\r\n    name\r\n    email\r\n    password\r\n  }\r\n}\r\n",
+						"variables": "{\r\n    \"id\":\"676d9adff3c1068fc06e13bb\"\r\n}"
+					}
+				},
+				"url": {
+					"raw": "{{url}}",
+					"host": [
+						"{{url}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
