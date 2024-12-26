@@ -1,18 +1,26 @@
 import express from "express";
-import { graphqlHTTP } from "express-graphql";
 import schema from "./graphqlschema/schema";
+import { createHandler } from "graphql-http/lib/use/express";
 
-const app = express()
+const app = express();
+const PORT = 4000;
+app.get("/", (req, res) => {
+  res.send("hello world");
+});
 
-app.get("/",(req,res)=>{
-    res.send("hello world")
-})
+var root = {
+  hello() {
+    return "Hello world! welcome to graphQL world";
+  },
+};
 
-const root ={hello:()=>"hello user welcome to graphql world"}
-app.use('/graphql',graphqlHTTP({
-    schema:schema,
-    rootValue:root,
-    graphiql:true
-}))
+app.use(
+  "/graphql",
+  createHandler({
+    schema: schema,
+    rootValue: root,
+  })
+);
 
-app.listen(5000,()=>{console.log(`graphql server running at http://localhost:${5000}/graphql`)})
+app.listen(PORT);
+console.log(`graphql server running at http://localhost:${PORT}/graphql`);
