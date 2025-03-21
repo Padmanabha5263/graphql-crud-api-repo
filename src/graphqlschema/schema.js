@@ -1,7 +1,6 @@
 import { buildSchema } from "graphql";
 
 export const schema = buildSchema(`
-    
     type User {
     id: ID!
     name: String!
@@ -12,7 +11,7 @@ export const schema = buildSchema(`
   type Query {
     getUser(id: ID!): User
     getUsers: [User]
-    hello: String
+    greetings: String
   }
 
   type Mutation {

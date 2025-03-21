@@ -16,10 +16,6 @@ mongoose
     console.error("MongoDB connection error:", error);
   });
 
-app.get("/", (req, res) => {
-  res.send("hello world");
-});
-
 app.use(
   "/graphql",
   createHandler({
