@@ -1,7 +1,10 @@
 import { userModel } from "../models/user";
 export const resolvers = {
-  greetings: () => {
-    return "Hello world! welcome to graphQL world";
+  greetings: ({ name }) => {
+    let message = name
+      ? `Hello ${name}! welcome to graphQL world`
+      : `Hello User! welcome to graphQL world`;
+    return message;
   },
   getUser: async ({ id }) => {
     try {

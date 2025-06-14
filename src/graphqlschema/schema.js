@@ -11,7 +11,7 @@ export const schema = buildSchema(`
   type Query {
     getUser(id: ID!): User
     getUsers: [User]
-    greetings: String
+    greetings(name:String): String
   }
 
   type Mutation {
